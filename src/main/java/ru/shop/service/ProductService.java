@@ -2,16 +2,17 @@ package ru.shop.service;
 
 import ru.shop.model.Product;
 import ru.shop.model.ProductType;
-import ru.shop.repository.IRepository;
 import ru.shop.repository.ProductRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public class ProductService {
-    private final IRepository<Product> repository;
+    private final  ProductRepository repository;
 
-    public ProductService(IRepository<Product> repository) {
+    public ProductService(ProductRepository repository) {
         this.repository = repository;
     }
 
@@ -31,5 +32,9 @@ public class ProductService {
             }
         }
         return result;
+    }
+
+    public Optional<Product> findByID(UUID id) {
+        return repository.findById(id);
     }
 }

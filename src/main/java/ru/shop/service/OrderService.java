@@ -4,17 +4,18 @@ import ru.shop.exception.BadOrderCountException;
 import ru.shop.model.Customer;
 import ru.shop.model.Order;
 import ru.shop.model.Product;
-import ru.shop.repository.IRepository;
+
 import ru.shop.repository.OrderRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public class OrderService {
-    private final IRepository<Order> repository;
+    private final OrderRepository repository;
 
-    public OrderService(IRepository<Order> repository) {
+    public OrderService(OrderRepository repository) {
         this.repository = repository;
     }
 
@@ -49,5 +50,8 @@ public class OrderService {
     }
     public void save(Order product) {
         repository.save(product);
+    }
+    public Optional<Order> findById(UUID id) {
+        return repository.findById(id);
     }
 }

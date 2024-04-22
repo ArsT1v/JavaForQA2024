@@ -4,14 +4,25 @@ import ru.shop.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-public class ProductRepository implements IRepository<Product> {
-    List<Product> Products = new ArrayList<>();
+public class ProductRepository {
+    List<Product> products = new ArrayList<>();
 
     public void save(Product Product) {
-        Products.add(Product);
+        products.add(Product);
     }
     public List<Product> findAll(){
-        return Products;
+        return products;
+    }
+
+    public Optional<Product> findById(UUID id){
+        for(Product product: products){
+            if(product.getId().equals(id)){
+                return Optional.of(product);
+            }
+        }
+        return Optional.empty();
     }
 }
