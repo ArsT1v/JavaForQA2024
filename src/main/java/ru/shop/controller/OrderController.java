@@ -15,9 +15,11 @@ import java.util.UUID;
 @RequestMapping("/order")
 public class OrderController {
 
-    OrderService orderService = new OrderService(
-            new OrderRepository()
-    );
+    private final OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @GetMapping
     public List<Order> getAll() {
