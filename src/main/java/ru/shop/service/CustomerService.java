@@ -13,7 +13,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CustomerService {
 
-    private final CustomerRepository repository;
+    public final CustomerRepository repository;
 
     public void save(Customer customer) {
         repository.save(customer);

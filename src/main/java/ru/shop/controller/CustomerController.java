@@ -13,7 +13,7 @@ import java.util.UUID;
 @RequestMapping("/customer")
 public class CustomerController {
 
-    private final CustomerService customerService;
+    public final CustomerService customerService;
 
     @GetMapping
     public List<Customer> getAll() {
